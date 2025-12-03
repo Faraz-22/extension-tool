@@ -1,0 +1,42 @@
+{
+  "manifest_version": 3,
+  "name": "Universal Accessibility Assistant",
+  "version": "1.0.0",
+  "description": "Universal accessibility tool for all web-based learning platforms and websites",
+  "permissions": [
+    "storage",
+    "activeTab",
+    "scripting"
+  ],
+  "host_permissions": [
+    "<all_urls>"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["content.js"],
+      "css": ["content.css"],
+      "run_at": "document_idle"
+    }
+  ],
+  "action": {
+    "default_popup": "popup.html"
+  },
+  "commands": {
+    "toggle-tts": {
+      "suggested_key": {
+        "default": "Ctrl+Shift+S"
+      },
+      "description": "Toggle Text-to-Speech"
+    },
+    "toggle-voice-input": {
+      "suggested_key": {
+        "default": "Ctrl+Shift+V"
+      },
+      "description": "Toggle Voice Input"
+    }
+  }
+}
